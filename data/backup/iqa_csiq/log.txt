@@ -1,0 +1,18 @@
+root@Station-T3610:/home/dakar/myfile/Deep_Leaning/theano/work/Plos_one/patch/iqa_csiq# ./split_patch.sh 
+Using gpu device 0: GeForce GTX 1070 (CNMeM is disabled, cuDNN 5005)
+label_all.shape (150,)
+image_all.shape (3, 381, 509, 150)
+Note: it only use CAIQ_blur dataset!!!,diffent pic is:  30
+train_index [23  9 15 21 14  8  3 28 10 27  2  6 24 17 19 12 20  1  5  0 29 25 13 22]
+test_index [18 26  7  4 11 16]
+train_index_sort [ 0  1  2  3  5  6  8  9 10 12 13 14 15 17 19 20 21 22 23 24 25 27 28 29]
+test_index_sort [ 4  7 11 16 18 26]
+train_image.shape:  (3, 381, 509, 120)
+test_image.shape:  (3, 381, 509, 30)
+Split Done.....
+train_image.shape:  (3, 381, 509, 120)
+test_image.shape:  (3, 381, 509, 30)
+train_image.shape:  (85560, 3, 16, 16)
+test_image.shape:  (21390, 3, 16, 16)
+Patch Done.....
+

@@ -1,0 +1,66 @@
+#[注意事项]
+##一 制作数据库：
+1）修改config.yaml文件，指向自己数据库,label等绝对地址，图像大小.
+
+            train_img_dir: '/×××/×××/TID2013_blur/'
+            # caffe style train labels
+            train_label_file: '/×××/×××/label.txt'
+            # dir to store all the preprocessed files
+            tar_root_dir: '/×××/×××/Pols_one_IQA/data/' 
+            tar_train_dir: '/×××/×××/Pols_one_IQA/data/image_all/' 
+            tar_label_dir: '/×××/×××/Pols_one_IQA/data/labels/' 
+            misc_dir: '/×××/×××/Pols_one_IQA/data/misc/' 
+            #enable or disable data label #True or False
+            enable_label: True
+            img_width:  512
+            img_height: 384
+   2）修改 make_dataset.py 
+   
+            line[13]:指定你图像的后缀名称
+-----------------------------------
+##二 划分训练集&测试集：
+
+  1）修改split_train_test.py 
+  
+        line[16],设置test_size测试集所占比例
+		line[16],line[26][27][28],line[35][36][37]设置相同内容的图像有几张
+        line[52],设置随机种子
+---------------------------------------------
+##三 给图像挖块：
+
+   1）修改patch_dataset.py
+   
+        line[28][32],配置挖块的大小
+----------------------------------------------
+##四 运行
+__1.__ python make_dataset.py config.yaml     
+
+           |将数据库中已经分好的数据读入python格式 
+           |生成：./data/image_all/image_all.hkl  
+                 ./data/labels/labels_all.npy 
+                 ./data/misc/image_all_mean.npy & image_all.txt
+__2.__ python local_contrast_normalization.py |将所有图像数据进行对比度规范化
+
+           |生成： ./data/image_all/image_all_lcn.npy(浮点型)
+           
+__3. __./shlit&patch.sh   |先随机划分训练集与测试集，然后分别在两个集上打patch 对图像进行挖块
+
+          |产生：./data/labels/train_label.npy&train_label_patch.npy & test_label.npy 
+                ./data/test/test_image.npy&test_label_patch.npy(打完patch后的) 
+                ./data/train/train_image.npy（打完patch后的）
+__4.__ python cnn.py |开始训练
+
+          |产生： ./data/labels/test_label.npy
+__5.__ 
+
+          cd ./data/labels 
+          python npy_to_txt.py
+          |产生： ./data/labels/test_label.txt(标签文件)
+               ./data/labels/test_result.txt(预测文件)
+__6.__ matlab 载入test_label.txt，test_result.txt 运行 BIQI.m计算Plcc srocc
+
+-----------------------------------------------------
+##五  训练好的模型参数
+
+     ./data/backup
+------------------------------------------------------------

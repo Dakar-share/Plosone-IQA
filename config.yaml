@@ -1,0 +1,18 @@
+#-------------make_dataset----------------------
+train_img_dir: '/home/dakar/myfile/Deep_Leaning/data_image/blur/TID2013_blur/'
+# caffe style train labels
+train_label_file: '/home/dakar/myfile/Deep_Leaning/data_image/blur/TID2013_blur/label.txt'
+
+# dir to store all the preprocessed files
+tar_root_dir: '/home/dakar/myfile/Deep_Leaning/theano/work/Plos_one/patch/iqa_tid2013/data/'  
+tar_train_dir: '/home/dakar/myfile/Deep_Leaning/theano/work/Plos_one/patch/iqa_tid2013/data/image_all/'  
+tar_label_dir: '/home/dakar/myfile/Deep_Leaning/theano/work/Plos_one/patch/iqa_tid2013/data/labels/'  
+misc_dir: '/home/dakar/myfile/Deep_Leaning/theano/work/Plos_one/patch/iqa_tid2013/data/misc/'  
+
+#enable or disable data label #True or False
+enable_label: True
+img_width:  512
+img_height: 384
+
+
+
