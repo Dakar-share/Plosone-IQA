@@ -43,7 +43,7 @@ __2.__ python local_contrast_normalization.py |将所有图像数据进行对比
 
            |生成： ./data/image_all/image_all_lcn.npy(浮点型)
            
-__3. __    ./shlit&patch.sh   |先随机划分训练集与测试集，然后分别在两个集上打patch 对图像进行挖块
+__3.__ ./shlit&patch.sh   |先随机划分训练集与测试集，然后分别在两个集上打patch 对图像进行挖块
 
           |产生：./data/labels/train_label.npy&train_label_patch.npy & test_label.npy 
                 ./data/test/test_image.npy&test_label_patch.npy(打完patch后的) 
