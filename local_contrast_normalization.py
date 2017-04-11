@@ -8,18 +8,18 @@ P = 3
 Q = 3
 C = 10.0
 a = np.asarray(a,dtype='f')
-
-for k in range(a.shape[3]):
+b = np.zeros(a.shape)
+for k in range(1):#a.shape[3]
    #start = time.clock()
-   for i in range(P,a.shape[2]):
-      for j in range(Q,a.shape[1]):
+   for i in range(P,a.shape[2]-P):
+      for j in range(Q,a.shape[1]-Q):
          u = np.mean(a[:,(j-Q):(j+Q),(i-P):(i+P),k])
          s = np.sqrt(np.sum(np.square(a[:,(j-Q):(j+Q),(i-P):(i+P),k]-u)))
-         a[:,j,i,k]=(a[:,j,i,k]-u)/(s+C)
+         b[:,j,i,k]=(a[:,j,i,k]-u)/(s+C)
    #end = time.clock()
-   print 'picnumber: u,s,a',k,u,s, a[:,j,i,k]
+   print 'picnumber: u,s,a',k,u,s, b[:,j,i,k]
    #print "this pic time:",(end-start)
 
 print "Done....."
-np.save(root+'image_all_lcn.npy',a[:,Q:,P:,:])
-scipy.misc.imshow(a[:,Q:,P:,2])
+np.save(root+'image_all_lcn.npy',b[:,Q:-Q,P:-P,:])
+#scipy.misc.imshow(b[:,Q:-Q,P:-P,0])
