@@ -9,7 +9,7 @@ Q = 3
 C = 10.0
 a = np.asarray(a,dtype='f')
 b = np.zeros(a.shape)
-for k in range(1):#a.shape[3]
+for k in range(a.shape[3]):
    #start = time.clock()
    for i in range(P,a.shape[2]-P):
       for j in range(Q,a.shape[1]-Q):
