@@ -50,15 +50,13 @@ __3.__ ./shlit&patch.sh   |先随机划分训练集与测试集，然后分别�
                 ./data/train/train_image.npy（打完patch后的）
 __4.__ python cnn.py |开始训练
 
-          |产生： ./data/labels/test_label.npy
-__5.__ 
+          |产生： ./data/labels/test_result.npy
+__5.__ (可选)
 
           cd ./data/labels 
           python npy_to_txt.py
           |产生： ./data/labels/test_label.txt(标签文件)
                ./data/labels/test_result.txt(预测文件)
-__6.__ matlab 载入test_label.txt，test_result.txt 运行 BIQI.m计算Plcc srocc
-
 -----------------------------------------------------
 ##五  训练好的模型参数
 

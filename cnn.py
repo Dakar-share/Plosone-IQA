@@ -13,7 +13,7 @@ from keras.layers.core import Layer
 from keras.regularizers import l2
 from sklearn.metrics import log_loss, accuracy_score, roc_auc_score
 from keras.callbacks import ModelCheckpoint
-
+from scipy import stats
 def load_data():
   """
   Load dataset and split data into training and test sets
@@ -84,5 +84,8 @@ if __name__ =='__main__':
   k = predictions_test.shape[0]/b.shape[0]
   for i in range(b.shape[0]):
     result.append(np.average(predictions_test[i*k:(i+1)*k,0]))
+  PLCC = stats.pearsonr(result, b)[0]
+  SROCC = stats.spearmanr(result, b)[0]
+  print("MLP: SROCC: %s PLCC: %s"%(SROCC,PLCC))
   np.save('./data/labels/test_result.npy',result)#predict result
   print "Done...."
